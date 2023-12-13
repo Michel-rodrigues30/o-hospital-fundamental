@@ -1,4 +1,4 @@
-
+-- Se o banco de dados existir, exclua-o
 DROP DATABASE IF EXISTS hospital;
 
 -- Crie o banco de dados
@@ -18,7 +18,7 @@ INSERT INTO `especialidades` (nome_especialidade) VALUES
 ('gastroenterologia'),
 ('dermatologia');
 
-
+-- Crie a tabela medico
 CREATE TABLE `medico` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `cpf` VARCHAR(11) NOT NULL,
@@ -34,24 +34,23 @@ CREATE TABLE `medico` (
 );
 
 INSERT INTO `medico` (cpf, rg, crm, nome, email, telefone, senha, especialidade) VALUES
-('15151515151', '465845554', 'CRM15151', 'Dra. Patricia Lima', 'patricia.lima@example.com', '15151515151', 'senha151', 4),
-('16161616161', '454686879', 'CRM16161', 'Dr. Marcelo Oliveira', 'marcelo.oliveira@example.com', '16161616161', 'senha161',4),
-('17171717171', '599866566', 'CRM17171', 'Dra. Andréa Santos', 'andrea.santos@example.com', '17171717171', 'senha171', 3),
-('18181818181', '884652154', 'CRM18181', 'Dr. Beatriz Silva', 'beatriz.silva@example.com', '18181818181', 'senha181', 3),
-('19191919191', '164684658', 'CRM19191', 'Dra. Ronaldo Lima', 'ronaldo.lima@example.com', '19191919191', 'senha191', 2),
-('20202020202', '883216848', 'CRM20202', 'Dr. Sandra Oliveira', 'sandra.oliveira@example.com', '20202020202', 'senha202', 2),
-('21212121212', '481815284', 'CRM21212', 'Dra. Thiago Santos', 'thiago.santos@example.com', '21212121212', 'senha212', 2),
-('22222222222', '958554884', 'CRM22222', 'Dr. Camila Lima', 'camila.lima@example.com', '22222222222', 'senha222', 1),
-('23232323232', '965985965', 'CRM23232', 'Dra. Marcos Oliveira', 'marcos.oliveira@example.com', '23232323232', 'senha232', 1),
-('24242424242', '787848787', 'CRM24242', 'Dr. Carolina Santos', 'carolina.santos@example.com', '24242424242', 'senha242', 1),
-('25252525252', '878785578', 'CRM25252', 'Dra. Lucas Lima', 'lucas.lima@example.com', '25252525252', 'senha252', 2),
-('26262626262', '848515484', 'CRM26262', 'Dr. Fernanda Oliveira', 'fernanda.oliveira@example.com', '26262626262', 'senha262', 3),
-('27272727272', '986265689', 'CRM27272', 'Dra. Pedro Lima', 'pedro.lima@example.com', '27272727272', 'senha272', 4),
-('28282828282', '2825282828', 'CRM28282', 'Dr. Camila Santos', 'camila.santos@example.com', '28282828282', 'senha282', 2),
-('29292929292', '2959292929', 'CRM29292', 'Dra. Thiago Lima', 'thiago.lima@example.com', '29292929292', 'senha292', 1);
+('12345678901', '1234567890', 'CRM12345', 'Dr. João Silva', 'joao.silva@example.com', '12345678901', 'senha123', 1),
+('98765432109', '9876543210', 'CRM54321', 'Dra. Maria Oliveira', 'maria.oliveira@example.com', '98765432109', 'senha456', 1),
+('56789012345', '5678901234', 'CRM67890', 'Dr. Carlos Santos', 'carlos.santos@example.com', '56789012345', 'senha789', 1),
+('11111111111', '1111111111', 'CRM11111', 'Dr. Ana Souza', 'ana.souza@example.com', '11111111111', 'senha111', 1),
+('22222222222', '2222222222', 'CRM22222', 'Dr. José Lima', 'jose.lima@example.com', '22222222222', 'senha222', 1),
+('33333333333', '3333333333', 'CRM33333', 'Dra. Paula Oliveira', 'paula.oliveira@example.com', '33333333333', 'senha333', 2),
+('44444444444', '4444444444', 'CRM44444', 'Dr. Silvia Martins', 'silvia.martins@example.com', '44444444444', 'senha444', 2),
+('55555555555', '5555555555', 'CRM55555', 'Dr. Pedro Lima', 'pedro.lima@example.com', '55555555555', 'senha555', 2),
+('66666666666', '6666666666', 'CRM66666', 'Dra. Carlos Oliveira', 'carlos.oliveira@example.com', '66666666666', 'senha666', 2),
+('77777777777', '7777777777', 'CRM77777', 'Dra. Ana Lima', 'ana.lima@example.com', '77777777777', 'senha777', 3),
+('88888888888', '8888888888', 'CRM88888', 'Dr. Julia Oliveira', 'julia.oliveira@example.com', '88888888888', 'senha888', 3),
+('99999999999', '9999999999', 'CRM99999', 'Dra. Marcos Silva', 'marcos.silva@example.com', '99999999999', 'senha999', 3),
+('12121212121', '1212121212', 'CRM12121', 'Dra. Marcela Souza', 'marcela.souza@example.com', '12121212121', 'senha121', 4),
+('13131313131', '1313131313', 'CRM13131', 'Dr. Paula Lima', 'paula.lima@example.com', '13131313131', 'senha131', 4),
+('14141414141', '1414141414', 'CRM14141', 'Dra. Ricardo Oliveira', 'ricardo.oliveira@example.com', '14141414141', 'senha141', 4);
 
-
-
+-- Crie a tabela paciente
 CREATE TABLE `paciente` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(120) NOT NULL,
@@ -67,7 +66,7 @@ CREATE TABLE `paciente` (
     PRIMARY KEY (`id`)
 );
 
-
+-- Correção no código INSERT INTO da tabela paciente
 INSERT INTO `paciente` (nome, endereco, rg, cpf, email, telefone, data_nascimento, altura, peso, rne) VALUES
 ('Ana Silva', 'Rua A, 123', '486527956', '74747474747', 'ana.silva@example.com', '12345678901', '1990-05-15', 1.70, 60, 'RNE12345'),
 ('Pedro Oliveira', 'Av. B, 456', '796222314', '45268953254', 'pedro.oliveira@example.com', '98765432109', '1985-08-20', 1.75, 70, 'RNE54321'),
@@ -85,7 +84,7 @@ INSERT INTO `paciente` (nome, endereco, rg, cpf, email, telefone, data_nasciment
 ('Renato Lima', 'Av. N, 1111', '969696969', '45685456958', 'renato.lima@example.com', '13131313131', '1996-07-30', 1.75, 73, 'RNE13131'),
 ('Carla Oliveira', 'Rua O, 1212', '458596542', '78564265489', 'carla.oliveira@example.com', '14141414141', '1983-12-10', 1.70, 68, 'RNE14141');
 
-
+-- Crie a tabela convenio
 CREATE TABLE `convenio` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(120) NOT NULL,
@@ -95,23 +94,23 @@ CREATE TABLE `convenio` (
 );
 
 INSERT INTO `convenio` (nome, cnpj, tempo_carencia) VALUES
-('Convenio h', '12345678901234', '2023-01-01'),
-('Convenio u', '56789012345678', '2023-02-15'),
-('Convenio d', '90123456789012', '2023-03-20'),
-('Convenio y', '34567890123456', '2023-04-10'),
-('Convenio d', '78901234567890', '2023-05-05'),
+('Convenio A', '12345678901234', '2023-01-01'),
+('Convenio B', '56789012345678', '2023-02-15'),
+('Convenio C', '90123456789012', '2023-03-20'),
+('Convenio D', '34567890123456', '2023-04-10'),
+('Convenio E', '78901234567890', '2023-05-05'),
 ('Convenio F', '12345098765432', '2023-06-25'),
 ('Convenio G', '67890123456789', '2023-07-15'),
-('Convenio f', '12345678901234', '2023-08-30'),
-('Convenio s', '56789012345678', '2023-09-22'),
-('Convenio a', '90123456789012', '2023-10-18'),
-('Convenio x', '34567890123456', '2023-11-12'),
-('Convenio v', '78901234567890', '2023-12-05'),
-('Convenio b', '12345098765432', '2024-01-15'),
-('Convenio a', '67890123456789', '2024-02-20'),
-('Convenio p', '12345678901234', '2024-03-10');
+('Convenio H', '12345678901234', '2023-08-30'),
+('Convenio I', '56789012345678', '2023-09-22'),
+('Convenio J', '90123456789012', '2023-10-18'),
+('Convenio K', '34567890123456', '2023-11-12'),
+('Convenio L', '78901234567890', '2023-12-05'),
+('Convenio M', '12345098765432', '2024-01-15'),
+('Convenio N', '67890123456789', '2024-02-20'),
+('Convenio O', '12345678901234', '2024-03-10');
 
-
+-- Crie a tabela consulta
 CREATE TABLE `consulta` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `id_medico` INT NOT NULL,
@@ -161,13 +160,13 @@ INSERT INTO `receita` (id_paciente, medicamento, instrucoes, quantidade_medicame
 ('3', 'Ibuprofeno', 'Tomar 1 comprimido a cada 12 horas', 30),
 ('4', 'Dipirona', 'Tomar 1 comprimido a cada 4 horas', 25),
 ('5', 'Omeprazol', 'Tomar 1 comprimido antes do café da manhã', 30),
-('6', 'Dorflex', 'Tomar 3 comprimido a cada 6 horas', 20),
+('6', 'Dorflex', 'Tomar 1 comprimido a cada 6 horas', 20),
 ('7', 'Cetirizina', 'Tomar 1 comprimido antes de dormir', 10),
-('8', 'Dexametasona', 'Tomar 2 comprimido pela manhã', 10),
+('8', 'Dexametasona', 'Tomar 1 comprimido pela manhã', 10),
 ('9', 'Loratadina', 'Tomar 1 comprimido a cada 24 horas', 10),
 ('10', 'Claritromicina', 'Tomar 1 comprimido a cada 12 horas', 15),
-('11', 'Hidroclorotiazida', 'Tomar 4 comprimido pela manhã', 30),
-('12', 'Losartana', 'Tomar 0.5 comprimido pela noite', 30),
+('11', 'Hidroclorotiazida', 'Tomar 1 comprimido pela manhã', 30),
+('12', 'Losartana', 'Tomar 1 comprimido pela noite', 30),
 ('13', 'Simvastatina', 'Tomar 1 comprimido antes de dormir', 30),
 ('14', 'Metformina', 'Tomar 1 comprimido antes do café da manhã', 30),
 ('15', 'Insulina', 'Aplicar 10 unidades antes das refeições', 10);
@@ -182,23 +181,21 @@ CREATE TABLE `enfermeiros` (
 );
 
 INSERT INTO `enfermeiros` (cre, nome, cpf) VALUES
-
-('CRE11111', 'Enfermeira Maria Silva', '78901234567'),
-('CRE22222', 'Enfermeiro João Oliveira', '89012345678'),
-('CRE33333', 'Enfermeira Carla Santos', '90123456789'),
-('CRE44444', 'Enfermeiro Marcos Lima', '12345678901'),
-('CRE55555', 'Enfermeira Ana Oliveira', '23456789012'),
-('CRE66666', 'Enfermeiro José Souza', '34567890123'),
-('CRE77777', 'Enfermeira Paula Lima', '45678901234'),
-('CRE88888', 'Enfermeiro Lucas Santos', '56789012345'),
-('CRE99999', 'Enfermeira Aline Oliveira', '67890123456'),
-('CRE12121', 'Enfermeiro Pedro Lima', '78901234567'),
-('CRE13131', 'Enfermeira Julia Martins', '89012345678'),
-('CRE14141', 'Enfermeiro Ricardo Silva', '90123456789'),
-('CRE15151', 'Enfermeira Marcela Oliveira', '12345678901'),
-('CRE16161', 'Enfermeiro Paula Souza', '23456789012'),
-('CRE17171', 'Enfermeira Gustavo Lima', '34567890123');
-
+('CRE12345', 'Enfermeira Maria Silva', '78901234567'),
+('CRE54321', 'Enfermeiro João Oliveira', '89012345678'),
+('CRE67890', 'Enfermeira Carla Santos', '90123456789'),
+('CRE11111', 'Enfermeiro Marcos Lima', '12345678901'),
+('CRE22222', 'Enfermeira Ana Oliveira', '23456789012'),
+('CRE33333', 'Enfermeiro José Souza', '34567890123'),
+('CRE44444', 'Enfermeira Paula Lima', '45678901234'),
+('CRE55555', 'Enfermeiro Lucas Santos', '56789012345'),
+('CRE66666', 'Enfermeira Aline Oliveira', '67890123456'),
+('CRE77777', 'Enfermeiro Pedro Lima', '78901234567'),
+('CRE88888', 'Enfermeira Julia Martins', '89012345678'),
+('CRE99999', 'Enfermeiro Ricardo Silva', '90123456789'),
+('CRE12121', 'Enfermeira Marcela Oliveira', '12345678901'),
+('CRE13131', 'Enfermeiro Paula Souza', '23456789012'),
+('CRE14141', 'Enfermeira Gustavo Lima', '34567890123');
 
 CREATE TABLE `tipo_quartos` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -208,21 +205,21 @@ CREATE TABLE `tipo_quartos` (
 );
 
 INSERT INTO `tipo_quartos` (valor_diaria, descricao) VALUES
-('280.00', 'Quarto Standard 1'),
-('230.00', 'Quarto Standard 2'),
-('250.00', 'Quarto Standard 3'),
+('200.00', 'Quarto Standard 1'),
+('210.00', 'Quarto Standard 2'),
+('220.00', 'Quarto Standard 3'),
 ('230.00', 'Quarto Standard 4'),
 ('240.00', 'Quarto Standard 5'),
 ('250.00', 'Quarto Deluxe 1'),
-('450.00', 'Quarto Deluxe 2'),
-('570.00', 'Quarto Deluxe 3'),
-('580.00', 'Suíte Júnior 1'),
-('590.00', 'Suíte Júnior 2'),
-('600.00', 'Suíte Executiva 1'),
-('610.00', 'Suíte Executiva 2'),
-('920.00', 'Suíte Presidencial 1'),
-('930.00', 'Suíte Presidencial 2'),
-('940.00', 'Suíte Presidencial 3');
+('260.00', 'Quarto Deluxe 2'),
+('270.00', 'Quarto Deluxe 3'),
+('280.00', 'Suíte Júnior 1'),
+('290.00', 'Suíte Júnior 2'),
+('300.00', 'Suíte Executiva 1'),
+('310.00', 'Suíte Executiva 2'),
+('320.00', 'Suíte Presidencial 1'),
+('330.00', 'Suíte Presidencial 2'),
+('340.00', 'Suíte Presidencial 3');
 
 CREATE TABLE `quarto` (
     `id` INT NOT NULL AUTO_INCREMENT,
